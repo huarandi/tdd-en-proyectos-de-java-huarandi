@@ -5,18 +5,18 @@ import java.util.List;
 
 public class Servicio {
     private Mailer mailer;
-    private Repositorio repo;
+    private Repo repo;
 
-    public Servicio(Mailer mailer, Repositorio repo) {
+    public Servicio(Mailer mailer, Repo repo) {
         this.mailer = mailer;
         this.repo = repo;
     }
 
-    private boolean hasFailedToDo(){
+    protected boolean hasFailedToDo(){
         throw  new UnsupportedOperationException("Not supported yet.");
     }
 
-    private boolean notifyFailed(){
+    protected boolean notifyFailed(){
         throw  new UnsupportedOperationException("Not supported yet.");
     }
 

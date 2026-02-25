@@ -2,7 +2,7 @@ package com.tt1.test;
 
 import java.util.List;
 
-public class Repositorio {
+public class Repositorio implements Repo {
     public DB db;
 
     public Repositorio(DB db){

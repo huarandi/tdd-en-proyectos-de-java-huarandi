@@ -16,7 +16,13 @@ public class TestRepositorio {
     private final String em2 = "email2";
 
     @Test
-    public void addGetToDo(){
+    public void addToDo(){
+        repositorio.addToDo(t1);
+        Assertions.assertEquals(t1, db.getToDo(t1.getName()));
+    }
+
+    @Test
+    public void getToDo(){
         repositorio.addToDo(t1);
         Assertions.assertEquals(t1, repositorio.getToDo(t1.getName()));
     }
@@ -39,6 +45,20 @@ public class TestRepositorio {
 
     @Test
     public void addEmail(){
-        repositorio.addToDo(t1);
+        repositorio.addEmail(em1);
+        repositorio.addEmail(em2);
+        Assertions.assertEquals(2, db.getAllEmail().size());
+        Assertions.assertTrue(db.getAllEmail().contains(em1));
+        Assertions.assertTrue(db.getAllEmail().contains(em2));
+    }
+
+    @Test
+    public void getEmail(){
+        repositorio.addEmail(em1);
+        repositorio.addEmail(em2);
+
+        Assertions.assertEquals(2, repositorio.getAllEmail().size());
+        Assertions.assertTrue(repositorio.getAllEmail().contains(em1));
+        Assertions.assertTrue(repositorio.getAllEmail().contains(em2));
     }
 }
