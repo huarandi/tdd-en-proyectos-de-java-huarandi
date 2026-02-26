@@ -19,13 +19,12 @@ public class TestRepositorioServicio {
     private Servicio ser;
 
     @BeforeEach
-    void setUp() {
+    public void init() {
+        repo = new Repositorio(new DBStub());
         for (int i = 0; i < 10; i++) {
-            td.add(new ToDo("td" + i, "desc" + i, new Date(), false));
-            em.add("em" + i);
+            repo.addToDo(new ToDo("td" + i, "desc" + i, new Date(System.currentTimeMillis() + 100000), false));
+            repo.addEmail("em" + i);
         }
-        repo = new RepoStub(td, em);
-        mailer = new MailerStub();
         ser = new Servicio(mailer, repo);
     }
 
@@ -58,7 +57,7 @@ public class TestRepositorioServicio {
     public void completeToDo() {
         ToDo t = ser.getUncompletedToDos().getFirst();
         ser.completeToDo(t);
-        Assertions.assertTrue(repo.getToDo("1").isCompleted());
+        Assertions.assertTrue(repo.getToDo(t.getName()).isCompleted());
     }
 
     @Test

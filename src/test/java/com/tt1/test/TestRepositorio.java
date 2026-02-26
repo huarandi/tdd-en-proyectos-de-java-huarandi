@@ -1,13 +1,13 @@
 package com.tt1.test;
 
+import java.util.Date;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Date;
-
 public class TestRepositorio {
-    private DB db = new DBStub();
-    private Repositorio repositorio = new Repositorio(db);
+    private final DB db = new DBStub();
+    private final  Repositorio repositorio = new Repositorio(db);
 
     private final ToDo t1 = new ToDo("1", "1", new Date(), false);
     private final ToDo t2 = new ToDo("2", "2", new Date(), false);

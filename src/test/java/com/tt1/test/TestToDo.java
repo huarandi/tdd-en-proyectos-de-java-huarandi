@@ -1,10 +1,10 @@
 package com.tt1.test;
 
+import java.util.Date;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.Date;
 
 public class TestToDo {
     private final String name = "ejemplo";
@@ -13,7 +13,7 @@ public class TestToDo {
     private final boolean comp = false;
 
     private ToDo tej;
-
+    
     @BeforeEach
     public void init(){
         tej = new ToDo(name, desc, limit, comp);

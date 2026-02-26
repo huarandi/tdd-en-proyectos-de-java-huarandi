@@ -1,17 +1,16 @@
 package com.tt1.test;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 public class TestServicio {
-    private List<ToDo>  td = new ArrayList<>();
-    private List<String> em = new ArrayList<>();
+    private final List<ToDo>  td = new ArrayList<>();
+    private final List<String> em = new ArrayList<>();
 
     private Repo repo;
     private Mailer mailer;
@@ -19,9 +18,9 @@ public class TestServicio {
     private Servicio ser;
 
     @BeforeEach
-    void setUp(){
+    public void init(){
         for(int i = 0; i < 10; i++){
-            td.add(new ToDo("td"+i, "desc"+i, new Date(), false));
+            td.add(new ToDo("td"+i, "desc"+i, new Date(System.currentTimeMillis() + 1000000), false));
             em.add("em"+i);
         }
         repo = new RepoStub(td, em);
@@ -46,8 +45,8 @@ public class TestServicio {
     @Test
     public void getUncompletedToDo(){
         List<ToDo> un = ser.getUncompletedToDos();
-        for(ToDo td : td){
-            if(!un.contains(td)) Assertions.fail();
+        for(ToDo t : td){
+            if(!un.contains(t)) Assertions.fail();
         }
         Assertions.assertTrue(true);
     }
@@ -56,7 +55,7 @@ public class TestServicio {
     public void completeToDo(){
         ToDo t = ser.getUncompletedToDos().getFirst();
         ser.completeToDo(t);
-        Assertions.assertTrue(repo.getToDo("1").isCompleted());
+        Assertions.assertTrue(repo.getToDo(t.getName()).isCompleted());
     }
 
     @Test

@@ -9,27 +9,34 @@ public class Repositorio implements Repo {
         this.db = db;
     }
 
+    @Override
     public ToDo getToDo(String name){
-        throw new UnsupportedOperationException("Not supported yet.");
+        return db.getToDo(name);
     }
 
+    @Override
     public List<ToDo> getAllToDo(){
-        throw new UnsupportedOperationException("Not supported yet.");
+        return db.getAllToDo();
     }
 
+    @Override
     public void setCompletado(ToDo t, boolean completado){
-        throw new UnsupportedOperationException("Not supported yet.");
+        ToDo t2 = new ToDo(t.getName(), t.getDescription(), t.getLimit(), completado);
+        db.updateToDo(t.getName(), t2);
     }
 
+    @Override
     public void addToDo(ToDo t){
-        throw new UnsupportedOperationException("Not supported yet.");
+        db.addToDo(t);
     }
 
+    @Override
     public void addEmail(String email){
-        throw new UnsupportedOperationException("Not supported yet.");
+        db.addEmail(email);
     }
 
+    @Override
     public List<String> getAllEmail(){
-        throw new UnsupportedOperationException("Not supported yet.");
+        return db.getAllEmail();
     }
 }

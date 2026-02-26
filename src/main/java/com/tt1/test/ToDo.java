@@ -52,6 +52,7 @@ public class ToDo implements Serializable {
         this.completed = completed;
     }
 
+    @Override
     public boolean equals(Object o){
         if (this == o) return true;
         if (o instanceof ToDo t){
