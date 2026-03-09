@@ -15,7 +15,7 @@ public interface Repo {
 
     /**
      * Devuelve una lista con todos los ToDo del repositorio.
-     * @return
+     * @return Lista de todos los ToDo.
      */
     List<ToDo> getAllToDo();
 
